@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<mule xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd"></mule>
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config_8081/api" doc:name="HTTP Listener config" doc:id="0d572fdc-f322-4c10-a75a-174781860ee9" basePath="/api" rejectInvalidTransferEncoding="true" >
+		<http:listener-connection protocol="HTTPS" host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="mule4-skeleton-spikeFlow" doc:id="91e069ef-99c8-450b-8d7c-429f95ee1795" >
+		<http:listener doc:name="Listener" doc:id="4d3e2734-afeb-4f79-bf49-f3184ec97038" config-ref="HTTP_Listener_config_8081/api" path="/hello-mulesoft"/>
+	</flow>
+</mule>
