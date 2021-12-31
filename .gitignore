@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Compiled class file
 *.class
 
@@ -71,4 +70,3 @@ target/
 .mule/**/*
 .DS_Store
 velocity.log
->>>>>>> f351e8b (feat: mulesoft api start)
