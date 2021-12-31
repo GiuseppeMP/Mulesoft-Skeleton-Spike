@@ -4,10 +4,12 @@
 	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
 http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
-	<http:listener-config name="HTTP_Listener_config_8081/api" doc:name="HTTP Listener config" doc:id="0d572fdc-f322-4c10-a75a-174781860ee9" basePath="/api" rejectInvalidTransferEncoding="true" >
-		<http:listener-connection protocol="HTTPS" host="0.0.0.0" port="8081" />
+	<http:listener-config name="HTTP_Listener_config_8081_api" doc:name="HTTP Listener config" doc:id="0d572fdc-f322-4c10-a75a-174781860ee9" basePath="/api" rejectInvalidTransferEncoding="true" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
 	</http:listener-config>
-	<flow name="mule4-skeleton-spikeFlow" doc:id="91e069ef-99c8-450b-8d7c-429f95ee1795" >
-		<http:listener doc:name="Listener" doc:id="4d3e2734-afeb-4f79-bf49-f3184ec97038" config-ref="HTTP_Listener_config_8081/api" path="/hello-mulesoft"/>
+	<flow name="GET-api-hello-world" doc:id="91e069ef-99c8-450b-8d7c-429f95ee1795" >
+		<http:listener doc:name="Listener" doc:id="4d3e2734-afeb-4f79-bf49-f3184ec97038" config-ref="HTTP_Listener_config_8081_api" path="/hello-world" outputMimeType="application/json"/>
+		<set-variable value="Mundo" doc:name="Set Nome" doc:id="266b93c0-d87b-4cf5-856a-cb5b52fe6f62" variableName="nome"/>
+		<set-payload value='#["Olá $(vars.nome)"]' doc:name="Set Payload" doc:id="bd8e8087-ae7b-4b1d-bfa8-fcf4941b5758" mimeType="text/plain" encoding="UTF-8"/>
 	</flow>
 </mule>
